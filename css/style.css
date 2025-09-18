@@ -1,0 +1,193 @@
+:root{
+  --brand-red:#d91414;
+  --brand-black:#0b0b0b;
+  --muted:#e9e9e9;
+  --radius:12px;
+  --max-width:1200px;
+  --accent-shadow: 0 6px 18px rgba(13,13,13,0.08);
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+*{ box-sizing:border-box; }
+body{ margin:0; color:var(--brand-black); background:#fff; }
+
+/* ===== FULL-BLEED HEADER ===== */
+header{
+  width:100%;
+  background:#fff;                         /* header bedekt hele breedte */
+  box-shadow:0 2px 6px rgba(0,0,0,0.1);    /* subtiele schaduw */
+  position:relative;
+  z-index:10;
+}
+
+/* Binnenkant header op max-width, zodat content mooi uitlijnt */
+.header-inner{
+  max-width:var(--max-width);
+  margin:0 auto;
+  padding-bottom:28px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+/* Logo links, iets over de banner */
+.brand{ position:relative; }
+.brand img{
+  height:72px;
+  display:block;
+  margin:0;
+  padding:0;
+  transform: translateY(8px); /* klein overlapje over de banner */
+}
+
+/* Rechts alleen Gear & Cart */
+nav.actions{ display:flex; gap:12px; align-items:center; }
+.btn{
+  cursor:pointer;
+  padding: 0;
+  border: none;
+  background: none;
+  font-size: 17px;
+  color: rgb(77, 77, 77);
+}
+
+/* ===== HERO DIRECT ONDER HEADER ===== */
+.hero{
+  width:100%;
+  margin:0 0 32px;            /* geen top-margin → direct onder header */
+  border-radius:0;
+  overflow:hidden;
+  position:relative;
+  z-index:1;
+  box-shadow:var(--accent-shadow);
+}
+
+.hero .hero-media{
+  position:relative;
+  height:468px;               /* 30% langer (was 360px) */
+  background:#ddd;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.hero .hero-media img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+/* Overlay rechts, beperkte breedte */
+.hero .overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-start;   /* begin bovenaan */
+  justify-content: flex-end; /* rechts uitlijnen */
+  padding: 0 48px;
+  box-sizing: border-box;
+}
+
+.hero .overlay .overlay-content {
+  max-width: 400px;
+  text-align: right;
+  color: #fff;
+  text-shadow: 0 6px 18px rgba(0,0,0,0.45);
+
+  margin-top: 3%;  /* schuif het blok naar beneden (≈ 50% van hero hoogte tov center) */
+  margin-right: 10%;
+}
+
+.hero h1{ font-size:46px; margin:0 0 6px; }
+.hero p{ margin:0; font-weight:600; opacity:0.95; }
+
+/* ===== CONTENT CONTAINERS ===== */
+.container{ max-width:var(--max-width); margin:18px auto; padding:0 18px; }
+.section-title{ margin:8px 0 18px; font-size:20px; }
+
+/* ===== PRODUCTS ===== */
+.product-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+.card{
+  background:var(--muted);
+  padding:18px;
+  border-radius:12px;
+  position:relative;
+  overflow:hidden;
+}
+.badge{
+  position:absolute; left:16px; top:16px;
+  background:var(--brand-red); color:#fff;
+  padding:6px 8px; border-radius:8px; font-size:13px;
+}
+.product-media {
+  height: 220px;              /* vaste hoogte, pas aan naar wens */
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;            /* witte achtergrond achter de afbeelding */
+  overflow: hidden;            /* zodat de afbeelding niet uitsteekt */
+}
+
+.product-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;           /* zorgt dat de afbeelding altijd past */
+  display: block;
+}
+
+.product-meta {
+  margin-top: 14px;
+  color: #000;                 /* tekst zwart */
+}
+
+.product-title {
+  font-size: 18px;
+  margin: 0 0 4px;
+  color: #000;                 /* titel ook zwart */
+  font-weight: 700;
+}
+
+.product-sub {
+  font-size: 13px;
+  margin: 0;
+  color: #333;                 /* subtitel donkergrijs voor leesbaarheid */
+}
+
+.price-row{ margin-top:8px; }
+.price{ font-weight:800; color:var(--brand-red); }
+
+/* ===== ABOUT & CONTACT ===== */
+#about{ margin-top:30px; }
+#contact{ margin-top:20px; margin-bottom:28px; }
+
+/* ===== FOOTER ===== */
+footer{
+  padding:28px 18px; background:#fafafa; margin-top:36px; border-top:1px solid #f0f0f0;
+}
+.footer-inner{
+  max-width:var(--max-width); margin:0 auto;
+  display:flex; align-items:center; justify-content:space-between;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width:1000px){
+  .product-grid{ grid-template-columns:repeat(2,1fr); }
+  .hero .overlay{ padding:0 24px; }
+}
+
+@media (max-width:640px){
+  .header-inner{ padding:14px 18px; }
+  .brand img{ height:56px; transform: translateY(6px); }
+
+  .hero .hero-media{ height:312px; } /* 30% langer dan 240px */
+  .hero h1{ font-size:28px; }
+  .product-grid{ grid-template-columns:1fr; }
+}
+
+.muted-text{ color:#666; font-size:14px; }
