@@ -125,17 +125,21 @@ nav.actions{ display:flex; gap:12px; align-items:center; }
   padding:6px 8px; border-radius:8px; font-size:13px;
 }
 .product-media {
-  aspect-ratio: 4 / 3;          /* alle afbeeldingen dezelfde verhouding */
+  aspect-ratio: 1 / 1;         /* vierkant kader */
   width: 100%;
   border-radius: 8px;
   overflow: hidden;
   background: #fff;
+  display: flex;
+  align-items: center;         /* verticaal centreren */
+  justify-content: center;     /* horizontaal centreren */
 }
 
+
 .product-media img {
-  width: 50%;
-  height: 
-  object-fit: cover;             /* vult het frame zonder uitrekken */
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;         /* past volledig in het kader */
   display: block;
 }
 
